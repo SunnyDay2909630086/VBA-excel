@@ -1,0 +1,13 @@
+Private Sub Worksheet_Change(ByVal Target As Range)
+    On Error GoTo SafeExit
+
+    If Intersect(Target, Me.Range("B5:B50")) Is Nothing Then
+        Exit Sub
+    End If
+
+    Application.EnableEvents = False
+    AutoFillReceiptUnits
+
+SafeExit:
+    Application.EnableEvents = True
+End Sub

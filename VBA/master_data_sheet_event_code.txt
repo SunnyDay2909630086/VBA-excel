@@ -1,0 +1,15 @@
+Private Sub Worksheet_Change(ByVal Target As Range)
+    On Error GoTo SafeExit
+
+    If Intersect(Target, Me.Range("A2:C200")) Is Nothing And _
+       Intersect(Target, Me.Range("E2:G200")) Is Nothing And _
+       Intersect(Target, Me.Range("J2:L200")) Is Nothing Then
+        Exit Sub
+    End If
+
+    Application.EnableEvents = False
+    RefreshDropdownSources
+
+SafeExit:
+    Application.EnableEvents = True
+End Sub
